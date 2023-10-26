@@ -1,0 +1,154 @@
+﻿@using PresentationLayer.Models;
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<!--begin::Authentication - Sign-in -->
+<div class="d-flex flex-column flex-column-fluid flex-lg-row">
+    <!--begin::Aside-->
+    <div class="d-flex flex-center w-lg-50 pt-15 pt-lg-0 px-10">
+        <!--begin::Aside-->
+        <div class="d-flex flex-center flex-lg-start flex-column">
+            <!--begin::Logo-->
+            <a href="Register/Index" class="mb-7">
+                <img alt="Logo" src="~/assets/media/logos/EV (2).svg" />
+            </a>
+            <!--end::Logo-->
+            <!--begin::Title-->
+            <h2 class="text-white fw-normal m-0">
+                Branding tools designed for your business
+            </h2>
+            <!--end::Title-->
+        </div>
+        <!--begin::Aside-->
+    </div>
+    <!--begin::Aside-->
+    <!--begin::Body-->
+    <div class="d-flex flex-center w-lg-50 p-10">
+        <!--begin::Card-->
+        <div class="card rounded-3 w-md-550px">
+            <!--begin::Card body-->
+            <div class="card-body d-flex flex-column p-10 p-lg-20 pb-lg-10">
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-center flex-column-fluid pb-15 pb-lg-20">
+
+                    <!--begin::Form-->
+                    <form class="form w-100" novalidate="novalidate" method="post" >
+                        <!--begin::Heading-->
+                        <div class="text-center mb-11">
+                            <!--begin::Title-->
+                            <h1 class="text-dark fw-bolder mb-3">
+                               Kayıt Ol
+                            </h1>
+                            <!--end::Title-->
+                            <!--begin::Subtitle-->
+                            <div class="text-gray-500 fw-semibold fs-6">
+                                EvTaş'a Kayıt Ol!
+                            </div>
+                            <!--end::Subtitle--->
+                        </div>
+                        <!--begin::Heading-->
+                        <!--begin::Login options-->
+                        <div class="row g-3 mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6">
+                                <!--begin::Google link--->
+                                <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                    <img alt="Logo" src="~/assets/media/svg/brand-logos/google-icon.svg" class="h-15px me-3" />
+                                    Google ile Kayıt Ol
+                                </a>
+                                <!--end::Google link--->
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-6">
+                                <!--begin::Google link--->
+                                <a href="#" class="btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100">
+                                    <img alt="Logo" src="~/assets/media/svg/brand-logos/facebook-2.svg" class="h-15px me-3" />
+                                    Facebook ile Kayıt Ol
+                                </a>
+                                <!--end::Google link--->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Login options-->
+                        <!--begin::Separator-->
+                        <div class="separator separator-content my-5">
+                        </div>
+                        <!--end::Separator-->
+                        <!--begin::Input group--->
+                        <div class="fv-row mb-5">
+                            <!--begin::Firstname-->
+                            <input type="text" placeholder="Adınız" asp-for="Firstname" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Firstname-->
+                        </div>
+                        <!--end::Input group--->
+                        <!--begin::Input group--->
+                        <div class="fv-row mb-5">
+                            <!--begin::Lastname-->
+                            <input type="text" placeholder="Soyadınız" asp-for="Lastname" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Lastname-->
+                        </div>
+                        <!--end::Input group--->
+                        <!--begin::Input group--->
+                        <div class="fv-row mb-5">
+                            <!--begin::Email-->
+                            <input type="text" placeholder="Email" asp-for="Email" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Email-->
+                        </div>
+                        <!--end::Input group--->
+                        <!--begin::Input group--->
+                        <div class="fv-row mb-5">
+                            <!--begin::Lastname-->
+                            <input type="text" placeholder="Telefon Numarası" asp-for="PhoneNumber" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Lastname-->
+                        </div>
+                        <!--end::Input group--->
+                        <div class="fv-row mb-5">
+                            <!--begin::Password-->
+                            <input type="password" placeholder="Parola" asp-for="Password" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Password-->
+                        </div>
+                        <div class="fv-row mb-5">
+                            <!--begin::Password-->
+                            <input type="password" placeholder="Tekrar Parola" asp-for="Repassword" autocomplete="off" class="form-control bg-transparent" />
+                            <!--end::Password-->
+                        </div>
+                        <!--end::Input group--->
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <!--begin::Submit button-->
+                        <div class="d-grid mb-10">
+                            <button type="submit" class="btn btn-primary">
+
+                                <!--begin::Indicator label-->
+                                <span class="indicator-label">
+                                    Kayıt Ol
+                                </span>
+                                <!--end::Indicator label-->
+                            </button>
+                        </div>
+                        <!--end::Submit button-->
+                        <!--begin::Sign up-->
+                        <div class="text-gray-500 text-center fw-semibold fs-6">
+                            Bir hesaba sahip misin?
+
+                            <a href="Account/Login" class="link-primary">
+                                Giriş Yap
+                            </a>
+                        </div>
+                        <!--end::Sign up-->
+                    </form>
+                    <!--end::Form-->
+
+                </div>
+                <!--end::Wrapper-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--end::Body-->
+</div>
+<!--end::Authentication - Sign-in-->	</div>
+

@@ -5,9 +5,16 @@ namespace PresentationLayer.Controllers
 {
     public class HomeController:Controller
     {
-        public IActionResult Bekleyen()
+		public IActionResult IsEkle()
+		{
+			return View();
+		}
+
+		public IActionResult Bekleyen()
         {
             return View();
         }
+
+
     }
 }

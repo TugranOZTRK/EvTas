@@ -1,0 +1,501 @@
+﻿@model AraclarViewModel
+@{
+    ViewData["Category"] = " Firma Ayarları";
+    ViewData["Title"] = "Araçlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class=" container-xxl " id="kt_content_container">
+        <!--begin::Card-->
+        <div class="card">
+            <!--begin::Card header-->
+            <div class="card-header border-0 pt-6">
+                <!--begin::Card title-->
+                <div class="card-title">
+                </div>
+                <!--begin::Card title-->
+                <!--begin::Card toolbar-->
+                <div class="card-toolbar" data-select2-id="select2-data-130-lrsr">
+                    <!--begin::Toolbar-->
+                    <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base" data-select2-id="select2-data-147-bx68">
+                        <!--begin::Add user-->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_add_vehicle">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor"></rect>
+                                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->        Arac Ekle
+                        </button>
+                        <!--end::Add user-->
+                    </div>
+                    <!--end::Toolbar-->
+                    <!--begin::Group actions-->
+                    <div class="d-flex justify-content-end align-items-center d-none" data-kt-user-table-toolbar="selected">
+                        <div class="fw-bold me-5">
+                            <span class="me-2" data-kt-user-table-select="selected_count"></span> Selected
+                        </div>
+
+                        <button type="button" class="btn btn-danger" data-kt-user-table-select="delete_selected">
+                            Delete Selected
+                        </button>
+                    </div>
+                    <!--end::Group actions-->
+                </div>
+                <!--end::Card toolbar-->
+            </div>
+            <!--end::Card header-->
+            <!--begin::Card body-->
+            <div class="card-body py-4">
+
+                <!--begin::Table-->
+                <div id="kt_table_users_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="table-responsive">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer" id="kt_table_users">
+                            <!--begin::Table head-->
+                            <thead>
+                                <!--begin::Table row-->
+                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_table_users" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 70px;">Arac ID</th>
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_table_users" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 276.275px;">Marka</th>
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_table_users" rowspan="1" colspan="1" aria-label="User: activate to sort column ascending" style="width: 276.275px;">Model</th>
+                                    <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_table_users" rowspan="1" colspan="1" aria-label="Last login: activate to sort column ascending" style="width: 161.738px;">Plaka</th>
+                                    <th class="text-end min-w-100px sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 129.962px;">Etkileşim</th>
+                                </tr>
+                                <!--end::Table row-->
+                            </thead>
+                            <!--end::Table head-->
+                            <!--begin::Table body-->
+                            <tbody class="text-gray-600 fw-semibold">
+                                @foreach (var item in Model.Araclar)
+                                {
+                                    <tr class="even">
+                                        <td> @item.AracId</td>
+                                        <!--begin::User--->
+                                        <td class="d-flex align-items-center">
+                                            <!--end::Avatar-->
+                                            <!--begin::User details-->
+                                            <div class="d-flex flex-column">
+                                                <a>@item.Marka</a>
+                                            </div>
+                                            <!--begin::User details-->
+
+                                        </td>
+                                        <!--end::User--->
+                                        <!--begin::Role--->
+                                        <td class="sorting_1">
+                                            @item.Model
+                                        </td>
+                                        <!--end::Role--->
+                                        <!--begin::Last login--->
+                                        <td>
+                                            @item.Plaka
+                                        </td>
+                                        <!--end::Last login--->
+                                        <!--begin::Two step--->
+                                        <!--end::Two step--->
+                                        <!--begin::Action--->
+                                        <td class="text-end">
+                                            <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                Aksiyon
+                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                                <span class="svg-icon svg-icon-5 m-0">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </a>
+                                            <!--begin::Menu-->
+                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3">
+                                                    <a href="" class="menu-link px-3 edit-button">
+                                                        Düzenle
+                                                    </a>
+                                                </div>
+                                                <!--end::Menu item-->
+                                                <!--begin::Menu item-->
+                                                <div class="menu-item px-3 delete-button">
+                                                    <a href="#" class="menu-link px-3 delete-link" data-arac-id="@item.AracId">
+                                                        Sil
+                                                    </a>
+                                                </div>
+
+                                                <!--end::Menu item-->
+                                            </div>
+                                            <!--end::Menu-->
+                                        </td>
+                                        <!--end::Action--->
+                                    </tr>
+                                }
+                            </tbody>
+                            <!--end::Table body-->
+                        </table>
+                    </div>
+                </div>
+                <!--end::Table-->
+            </div>
+            <!--end::Card body-->
+        </div>
+        <!--end::Card-->
+    </div>
+</div>
+
+<div class="modal fade" id="kt_modal_add_vehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2>Yeni Araç Ekle</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                <!--begin::Form-->
+                <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="post">
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç Markasını girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" id="txtmarka" placeholder="" asp-name="marka">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç modelini girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" placeholder="" id="txtmodel" asp-name="model">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç Plakasını girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" placeholder="" id="txtplaka" asp-name="plaka">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Actions-->
+                    <div class="text-center pt-15">
+
+                        <button type="submit" id="btnaddvehicle" class="btn btn-primary">
+                            <span class="indicator-label">
+                                Kaydet
+                            </span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end::Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<div class="modal fade" id="kt_modal_edit_vehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <div class="modal-header">
+                <!--begin::Modal title-->
+                <h2>Araç Düzenle</h2>
+                <!--end::Modal title-->
+                <!--begin::Close-->
+                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                    <i class="ki-duotone ki-cross fs-1"><span class="path1"></span><span class="path2"></span></i>
+                </div>
+                <!--end::Close-->
+            </div>
+            <!--end::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                <!--begin::Form-->
+                <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="post">
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç ID</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" id="aracID" placeholder="" name="aracID">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç Markasını girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" id="marka" placeholder="" name="marka">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç modelini girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" placeholder="" id="model" name="model">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
+                        <!--begin::Label-->
+                        <label class="d-flex align-items-center fs-6 fw-semibold form-label mb-2">
+                            <span class="required">Araç Plakasını girin</span>
+
+
+                            <span class="ms-1" data-bs-toggle="tooltip" aria-label="Specify a card holder's name" data-bs-original-title="Specify a card holder's name" data-kt-initialized="1">
+                                <i class="ki-duotone ki-information-5 text-gray-500 fs-6"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+                            </span>
+                        </label>
+                        <!--end::Label-->
+
+                        <input type="text" class="form-control form-control-solid" placeholder="" id="plaka" name="plaka">
+                        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback"></div>
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Actions-->
+                    <div class="text-center pt-15">
+
+                        <button type="submit" id="btneditvehicle" class="btn btn-primary">
+                            <span class="indicator-label">
+                                Kaydet
+                            </span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end::Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<div class="modal fade" id="kt_modal_delete_vehicle" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!--begin::Modal dialog-->
+    <div class="modal-dialog modal-dialog-centered mw-650px">
+        <!--begin::Modal content-->
+        <div class="modal-content">
+            <!--begin::Modal header-->
+            <!--begin::Modal body-->
+            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                <!--begin::Form-->
+                <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="post">
+                    <!--begin::Actions-->
+                    <div class="text-center pt-15">
+                        <h2>Aracı silmek istediğinize emin misiniz?</h2>
+                    </div>
+                    <div class="text-center pt-15">
+
+                        <button type="submit" id="btndeletevehicle" class="btn btn-danger">
+                            <span class="indicator-label">
+                                Sil
+                            </span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end::Form-->
+            </div>
+            <!--end::Modal body-->
+        </div>
+        <!--end::Modal content-->
+    </div>
+    <!--end::Modal dialog-->
+</div>
+<script>
+    $("#btnaddvehicle").click(function (e) {
+        e.preventDefault(); // Formun varsayılan davranışını engellemek için
+
+        let vehvalues = {
+            Marka: $("#txtmarka").val(),
+            Model: $("#txtmodel").val(),
+            Plaka: $("#txtplaka").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Home/AracEkle/",
+            data: vehvalues,
+            success: function (data) {
+                // Eylemin döndürdüğü JSON verisini işleyin
+                var result = JSON.parse(data);
+                alert("Araç başarıyla eklendi");
+                // Başarılı bir şekilde eklendikten sonra sayfayı yeniden yüklemek isterseniz:
+                window.location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Araç eklenirken bir hata oluştu: " + errorThrown);
+            }
+        });
+    });
+
+    document.querySelectorAll('.edit-button').forEach(function (button, index) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            // Seçili satırı bul
+            var row = event.target.closest('tr');
+            // Satır içindeki verileri al
+            var aracId = row.querySelector('td:nth-child(1)').textContent.trim();
+            var marka = row.querySelector('td:nth-child(2) a').textContent.trim();
+            var model = row.querySelector('td:nth-child(3)').textContent.trim();
+            var plaka = row.querySelector('td:nth-child(4)').textContent.trim();
+
+            // Modal içindeki inputlara bu verileri yaz
+            document.getElementById('aracID').value = aracId;
+            document.getElementById('marka').value = marka;
+            document.getElementById('model').value = model;
+            document.getElementById('plaka').value = plaka;
+
+            // Modal'ı aç
+            var modal = new bootstrap.Modal(document.getElementById('kt_modal_edit_vehicle'));
+            modal.show();
+        });
+    });
+
+    // Kaydet butonuna tıklandığında
+    $('#btneditvehicle').on('click', function (event) {
+        event.preventDefault();
+
+        // Modal içindeki inputlardan verileri al
+        var aracId = $('#aracID').val();
+        var marka = $('#marka').val();
+        var model = $('#model').val();
+        var plaka = $('#plaka').val();
+
+        // Verileri bir JavaScript nesnesi olarak hazırla
+        var data = {
+            AracId: aracId,
+            Marka: marka,
+            Model: model,
+            Plaka: plaka,
+            Aktif: true
+        };
+        $("#btnaddvehicle").click(function (e) {
+            e.preventDefault(); // Formun varsayılan davranışını engellemek için
+            // Verileri AJAX ile post et
+            $.ajax({
+                url: '/Home/AracDuzenle',
+                type: 'POST',
+                data: JSON.stringify(data), // Use JSON.stringify to serialize the data
+                contentType: 'application/json',
+                success: function (response) {
+                    alert('Veriler başarıyla kaydedildi.');
+
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    alert('Veriler kaydedilemedi.');
+                    console.error(error);
+                }
+            });
+        });
+    });
+    // Sil butonlarına tıklanınca
+    $('.delete-link').on('click', function (e) {
+        e.preventDefault();
+
+        // Tıklanan satırdaki AracId'yi al
+        var aracId = $(this).data('arac-id');
+
+
+        // Modal'ı aç
+        var modal = new bootstrap.Modal(document.getElementById('kt_modal_delete_vehicle'));
+        modal.show();
+
+        $("#btndeletevehicle").click(function (e) {
+            e.preventDefault(); // Formun varsayılan davranışını engellemek için
+            $.ajax({
+                url: '/Home/AracSil',
+                type: 'POST',
+                data: { aracId: aracId },
+                success: function (response) {
+                    // Silme işlemi başarılı ise, sayfayı yenile veya tabloyu güncelle
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+    });
+
+    // Modal'ı kapat
+    var modal = new bootstrap.Modal(document.getElementById('kt_modal_edit_vehicle'));
+    modal.hide();
+
+</script>

@@ -53,5 +53,4 @@ namespace PresentationLayer.Controllers
             return RedirectToAction("Araclar", "Home");
         }
     }
-
 }
